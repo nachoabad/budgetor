@@ -1,0 +1,5 @@
+es:
+  hello: "Hello world"
+  time:
+    formats:
+      long: "%d/%m/%Y"
