@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2019_12_13_211759) do
   end
 
   create_table "choices", force: :cascade do |t|
-    t.string "sentence"
+    t.string "name"
     t.integer "position"
     t.bigint "question_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2019_12_13_211759) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string "sentence"
+    t.string "name"
     t.integer "position"
     t.bigint "sector_id", null: false
     t.datetime "created_at", precision: 6, null: false

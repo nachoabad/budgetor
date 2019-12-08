@@ -11,4 +11,12 @@ if Rails.env.development?
 
   user1 = User.create! email: 'user1@mail.com', password: 'useruser', password_confirmation: 'useruser'
   user2 = User.create! email: 'user2@mail.com', password: 'useruser', password_confirmation: 'useruser'
+
+  sector1 = Sector.create! name: 'Sector 1'
+
+  question1 = Question.create! name: 'Question 1', position: 1, sector: sector1
+  question2 = Question.create! name: 'Question 2', position: 2, sector: sector1
+
+  choice11 = Choice.create! name: 'Choice 11', position: 1, question: question1
+  choice12 = Choice.create! name: 'Choice 12', position: 2, question: question1
 end
