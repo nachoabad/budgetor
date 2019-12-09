@@ -1,4 +1,5 @@
 class ChoicesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_choice, only: [:show, :edit, :update, :destroy]
 
   # GET /choices

@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   resources :sectors
   resources :clients
 
-  root to: 'budgets#index'
+  root to: 'clients#index'
 end

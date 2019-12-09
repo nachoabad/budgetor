@@ -13,9 +13,9 @@ function Choices(props) {
     );
   } 
   return (
-    <form onSubmit={props.handleSubmit}>
-      <input type="text"   value={props.input} onChange={props.handleInput} />
-      <input type="submit" value="Submit" />
+    <form onSubmit={props.handleSubmit} className='form-width-400'>
+      <input type="text" className='form-control mb-3'  value={props.input} onChange={props.handleInput} required />
+      <input type="submit" className='btn btn-primary' value='Guardar' />
     </form>
   );
 }

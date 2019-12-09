@@ -1,4 +1,5 @@
 class BudgetsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_budget, only: [:show, :edit, :update, :destroy]
   before_action :set_clients, only: [:new, :edit]
 
@@ -11,7 +12,9 @@ class BudgetsController < ApplicationController
 
   def new
     @budget = current_user.budgets.new
-    @questions = Sector.first.questions.to_json(include: :choices)
+    if false
+      @questions = Sector.first.questions.to_json(include: :choices)
+    end
   end
 
   def edit

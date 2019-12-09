@@ -1,5 +1,14 @@
 es:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              invalid: 'Must include uppercase & number'
+              blank: no puede estar vacía
+            password_confirmation:
+              confirmation: no coincide las confirmación de clave
   time:
     formats:
       long: "%d/%m/%Y"

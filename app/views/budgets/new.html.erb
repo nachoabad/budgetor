@@ -1,4 +1,3 @@
-<div  id='budget-form' 
-      data-questions='<%= @questions %>'
-      >
-</div>
+<%= render 'client_sector_form' unless @questions %>
+
+<%= render 'react_budget_form'  if @questions %>

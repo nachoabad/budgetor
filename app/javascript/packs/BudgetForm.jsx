@@ -26,10 +26,10 @@ const BudgetForm = props => {
     event.preventDefault();
   };
 
-  if (questions.length > position + 1) {
+  if (questions.length > position) {
     return (
       <div>
-        <h1>{questions[position].name}</h1>
+        <h4>{questions[position].name}</h4>
         <Choices question={questions[position]}
                   handleClick={handleClick}
                   input={input}
@@ -43,11 +43,13 @@ const BudgetForm = props => {
 }
 
 document.addEventListener('turbolinks:load', () => {
-  const node      = document.querySelector('#budget-form');
-  const questions = node.dataset.questions;
+  const node = document.querySelector('#react-budget-form');
+  if (node) {
+    const questions = node.dataset.questions;
 
-  ReactDOM.render(
-    <BudgetForm questions={JSON.parse(questions)} />,
-    node
-  )
+    ReactDOM.render(
+      <BudgetForm questions={JSON.parse(questions)} />,
+      node
+    )
+  }
 })
