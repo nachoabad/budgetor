@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
-import Question from './Question'
+import Choices from './Choices'
 
 
 const BudgetForm = props => {
@@ -8,15 +8,15 @@ const BudgetForm = props => {
 
   const [answers, setAnswers]   = useState([]);
   const [position, setPosition] = useState(0);
-  const [input, setInput] = useState('');
+  const [input, setInput]       = useState('');
 
   const handleClick = id => {
-    setAnswers([...answers, id]);
+    setAnswers([...answers, id])
     setPosition(position + 1)
   };
 
   const handleInput = event => {
-    setInput(event.target.value);
+    setInput(event.target.value)
   };
 
   const handleSubmit = event => {
@@ -26,16 +26,20 @@ const BudgetForm = props => {
     event.preventDefault();
   };
 
-  return (
-    <div>
-      <h1>{questions[position].name}</h1>
-      <Question question={questions[position]}
-                handleClick={handleClick}
-                input={input}
-                handleInput={handleInput}
-                handleSubmit={handleSubmit} />
-    </div>
-  );
+  if (questions.length > position + 1) {
+    return (
+      <div>
+        <h1>{questions[position].name}</h1>
+        <Choices question={questions[position]}
+                  handleClick={handleClick}
+                  input={input}
+                  handleInput={handleInput}
+                  handleSubmit={handleSubmit} />
+      </div>
+    );
+  } else {
+    setPosition(0)
+  }
 }
 
 document.addEventListener('turbolinks:load', () => {

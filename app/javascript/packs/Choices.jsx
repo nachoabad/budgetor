@@ -1,7 +1,7 @@
 import React from 'react'
 import Choice from './Choice'
 
-function Question(props) {
+function Choices(props) {
   const choices = props.question.choices
   if (choices.length > 0) {
     return (
@@ -20,4 +20,4 @@ function Question(props) {
   );
 }
 
-export default Question
+export default Choices
