@@ -12,8 +12,11 @@ class BudgetsController < ApplicationController
 
   def new
     @budget = current_user.budgets.new
-    if false
-      @questions = Sector.first.questions.to_json(include: :choices)
+    client_id, sector_id = params[:client], params[:sector]
+
+    if client_id && sector_id
+      sector = Sector.find sector_id
+      @questions = sector.questions.to_json(include: :choices)
     end
   end
 
