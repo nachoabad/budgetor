@@ -1,8 +1,11 @@
 require 'test_helper'
 
 class BudgetsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @budget = budgets(:one)
+    sign_in users(:one)
   end
 
   test "should get index" do

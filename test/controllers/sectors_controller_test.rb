@@ -1,8 +1,11 @@
 require 'test_helper'
 
 class SectorsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @sector = sectors(:one)
+    sign_in users(:one)
   end
 
   test "should get index" do

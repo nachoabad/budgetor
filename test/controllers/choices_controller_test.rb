@@ -1,8 +1,11 @@
 require 'test_helper'
 
 class ChoicesControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @choice = choices(:one)
+    sign_in users(:one)
   end
 
   test "should get index" do

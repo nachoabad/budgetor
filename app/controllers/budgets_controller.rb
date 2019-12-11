@@ -1,10 +1,8 @@
 class BudgetsController < ApplicationController
   before_action :set_budget, only: [:show, :edit, :update, :destroy]
 
-  # GET /budgets
-  # GET /budgets.json
   def index
-    @budgets = Budget.all
+    @budgets = current_user.budgets
   end
 
   # GET /budgets/1
