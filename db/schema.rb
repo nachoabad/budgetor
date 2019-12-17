@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_13_211759) do
+ActiveRecord::Schema.define(version: 2019_12_17_195505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,12 @@ ActiveRecord::Schema.define(version: 2019_12_13_211759) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "budget_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "budgets", force: :cascade do |t|
     t.bigint "client_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -50,6 +56,7 @@ ActiveRecord::Schema.define(version: 2019_12_13_211759) do
 
   create_table "choices", force: :cascade do |t|
     t.string "name"
+    t.string "translation"
     t.integer "position"
     t.bigint "question_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -65,19 +72,23 @@ ActiveRecord::Schema.define(version: 2019_12_13_211759) do
     t.index ["user_id"], name: "index_clients_on_user_id"
   end
 
-  create_table "questions", force: :cascade do |t|
-    t.string "name"
-    t.integer "position"
-    t.bigint "sector_id", null: false
+  create_table "line_items", force: :cascade do |t|
+    t.text "description"
+    t.decimal "price"
+    t.bigint "budget_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["sector_id"], name: "index_questions_on_sector_id"
+    t.index ["budget_id"], name: "index_line_items_on_budget_id"
   end
 
-  create_table "sectors", force: :cascade do |t|
+  create_table "questions", force: :cascade do |t|
     t.string "name"
+    t.string "translation"
+    t.integer "position"
+    t.bigint "budget_type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["budget_type_id"], name: "index_questions_on_budget_type_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -95,5 +106,6 @@ ActiveRecord::Schema.define(version: 2019_12_13_211759) do
   add_foreign_key "budgets", "clients"
   add_foreign_key "choices", "questions"
   add_foreign_key "clients", "users"
-  add_foreign_key "questions", "sectors"
+  add_foreign_key "line_items", "budgets"
+  add_foreign_key "questions", "budget_types"
 end

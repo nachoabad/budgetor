@@ -1,10 +1,10 @@
-<%= form_with(model: sector, local: true) do |form| %>
-  <% if sector.errors.any? %>
+<%= form_with(model: budget_type, local: true) do |form| %>
+  <% if budget_type.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(sector.errors.count, "error") %> prohibited this sector from being saved:</h2>
+      <h2><%= pluralize(budget_type.errors.count, "error") %> prohibited this budget_type from being saved:</h2>
 
       <ul>
-        <% sector.errors.full_messages.each do |message| %>
+        <% budget_type.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>

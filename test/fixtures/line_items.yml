@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  position: 1
-  budget_type: one
+  description: MyText
+  price: 9.99
+  budget: one
 
 two:
-  name: MyString
-  position: 2
-  budget_type: two
+  description: MyText
+  price: 9.99
+  budget: two

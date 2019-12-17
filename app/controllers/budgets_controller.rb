@@ -12,11 +12,11 @@ class BudgetsController < ApplicationController
 
   def new
     @budget = current_user.budgets.new
-    @client_id, sector_id = params[:client], params[:sector]
+    @client_id, budget_type_id = params[:client], params[:budget_type]
     
-    if @client_id && sector_id
-      sector = Sector.find sector_id
-      @questions = sector.questions.to_json(include: :choices)
+    if @client_id && budget_type_id
+      budget_type = BudgetType.find budget_type_id
+      @questions = budget_type.questions.to_json(include: :choices)
     end
   end
   
@@ -24,7 +24,6 @@ class BudgetsController < ApplicationController
   end
   
   def create
-    byebug
     @budget = current_user.budgets.new(budget_params)
 
     respond_to do |format|

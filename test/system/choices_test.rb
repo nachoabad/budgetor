@@ -16,7 +16,7 @@ class ChoicesTest < ApplicationSystemTestCase
 
     fill_in "Position", with: @choice.position
     fill_in "Question", with: @choice.question_id
-    fill_in "Sentence", with: @choice.sentence
+    fill_in "name", with: @choice.name
     click_on "Create Choice"
 
     assert_text "Choice was successfully created"
@@ -29,7 +29,7 @@ class ChoicesTest < ApplicationSystemTestCase
 
     fill_in "Position", with: @choice.position
     fill_in "Question", with: @choice.question_id
-    fill_in "Sentence", with: @choice.sentence
+    fill_in "name", with: @choice.name
     click_on "Update Choice"
 
     assert_text "Choice was successfully updated"

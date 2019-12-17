@@ -7,6 +7,7 @@ import Confirmation         from './Confirmation'
 const BudgetForm = props => {
   const questions  = props.questions
   const client_id  = props.client_id
+  const budget_id  = props.budget_id
   const csrf_token = props.csrf_token
 
   const [answers, setAnswers]   = useState([]);
@@ -43,6 +44,7 @@ const BudgetForm = props => {
   } else {
     return (
       <Confirmation client_id={client_id}
+                    budget_id={budget_id}
                     questions={questions}
                     answers={answers}
                     csrf_token={csrf_token} />
@@ -55,11 +57,13 @@ document.addEventListener('turbolinks:load', () => {
   if (node) {
     const questions  = node.dataset.questions;
     const client_id  = node.dataset.client_id;
+    const budget_id  = node.dataset.budget_id;
     const csrf_token = node.dataset.csrf_token;
 
     ReactDOM.render(
       <BudgetForm questions={JSON.parse(questions)}
                   client_id={client_id}
+                  budget_id={budget_id}
                   csrf_token={csrf_token} />,
       node
     )

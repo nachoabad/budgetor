@@ -1,0 +1,9 @@
+<%= form_with(url: new_budget_path, local: true, method: "get", html: {class: 'form-width-400'}) do %>
+  <div class="form-group">
+    <%= select_tag "client", options_from_collection_for_select(current_user.clients.all, "id", "name"), prompt: "Selecciona Cliente", class: 'form-control', required: true %>
+  </div>
+  <div class="form-group">
+    <%= select_tag "budget_type", options_from_collection_for_select(BudgetType.all, "id", "name"), prompt: "Selecciona Tipo de Presupuesto", class: 'form-control', required: true %>
+  </div>
+  <%= submit_tag "Crear Presupuesto", class: 'btn btn-lg btn-block btn-primary' %>
+<% end %>

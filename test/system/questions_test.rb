@@ -15,8 +15,8 @@ class QuestionsTest < ApplicationSystemTestCase
     click_on "New Question"
 
     fill_in "Position", with: @question.position
-    fill_in "Sector", with: @question.sector_id
-    fill_in "Sentence", with: @question.sentence
+    fill_in "BudgetType", with: @question.budget_type_id
+    fill_in "name", with: @question.name
     click_on "Create Question"
 
     assert_text "Question was successfully created"
@@ -28,8 +28,8 @@ class QuestionsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Position", with: @question.position
-    fill_in "Sector", with: @question.sector_id
-    fill_in "Sentence", with: @question.sentence
+    fill_in "BudgetType", with: @question.budget_type_id
+    fill_in "name", with: @question.name
     click_on "Update Question"
 
     assert_text "Question was successfully updated"

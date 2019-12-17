@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :line_items
+  resources :budget_types
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -7,7 +9,7 @@ Rails.application.routes.draw do
   resources :budgets
   resources :choices
   resources :questions
-  resources :sectors
+  resources :budget_types
   resources :clients
 
   root to: 'clients#index'

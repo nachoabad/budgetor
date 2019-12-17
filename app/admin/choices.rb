@@ -10,7 +10,7 @@ ActiveAdmin.register Choice do
   # or
   #
   # permit_params do
-  #   permitted = [:sentence, :position, :question_id]
+  #   permitted = [:name, :position, :question_id]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
