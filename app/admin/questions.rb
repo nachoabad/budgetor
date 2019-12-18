@@ -5,7 +5,7 @@ ActiveAdmin.register Question do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :name, :position, :budget_type_id
+  permit_params :name, :translation, :position, :budget_type_id
   #
   # or
   #

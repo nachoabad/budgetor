@@ -15,8 +15,8 @@ class BudgetsController < ApplicationController
     @client_id, budget_type_id = params[:client], params[:budget_type]
     
     if @client_id && budget_type_id
-      budget_type = BudgetType.find budget_type_id
-      @questions = budget_type.questions.to_json(include: :choices)
+      @budget_type = BudgetType.find budget_type_id
+      @questions = @budget_type.questions.to_json(include: :choices)
     end
   end
   
