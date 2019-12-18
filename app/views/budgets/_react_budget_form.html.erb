@@ -1,4 +1,6 @@
 <div  id='react-budget-form' 
       data-questions='<%= @questions %>'
-      class='d-flex justify-content-center text-center mt-3'>
+      data-client_id='<%= @client_id %>'
+      data-csrf_token='<%= session[:_csrf_token] %>'
+      class='text-center mt-3'>
 </div>

@@ -12,18 +12,19 @@ class BudgetsController < ApplicationController
 
   def new
     @budget = current_user.budgets.new
-    client_id, sector_id = params[:client], params[:sector]
-
-    if client_id && sector_id
+    @client_id, sector_id = params[:client], params[:sector]
+    
+    if @client_id && sector_id
       sector = Sector.find sector_id
       @questions = sector.questions.to_json(include: :choices)
     end
   end
-
+  
   def edit
   end
-
+  
   def create
+    byebug
     @budget = current_user.budgets.new(budget_params)
 
     respond_to do |format|
@@ -67,6 +68,6 @@ class BudgetsController < ApplicationController
     end
 
     def budget_params
-      params.require(:budget).permit(:client_id)
+      params.require(:budget).permit(:client_id, :answers)
     end
 end

@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
-import ReactDOM from 'react-dom'
-import Choices from './Choices'
+import React, { useState }  from 'react'
+import ReactDOM             from 'react-dom'
+import Choices              from './Choices'
+import Confirmation         from './Confirmation'
 
 
 const BudgetForm = props => {
-  const questions = props.questions
+  const questions  = props.questions
+  const client_id  = props.client_id
+  const csrf_token = props.csrf_token
 
   const [answers, setAnswers]   = useState([]);
   const [position, setPosition] = useState(0);
@@ -20,17 +23,17 @@ const BudgetForm = props => {
   };
 
   const handleSubmit = event => {
-    setAnswers([...answers, input]);
-    setInput('');
+    setAnswers([...answers, input])
+    setInput('')
     setPosition(position + 1)
-    event.preventDefault();
+    event.preventDefault()
   };
 
   if (questions.length > position) {
     return (
       <div>
         <h4>{questions[position].name}</h4>
-        <Choices question={questions[position]}
+        <Choices  question={questions[position]}
                   handleClick={handleClick}
                   input={input}
                   handleInput={handleInput}
@@ -38,17 +41,26 @@ const BudgetForm = props => {
       </div>
     );
   } else {
-    setPosition(0)
+    return (
+      <Confirmation client_id={client_id}
+                    questions={questions}
+                    answers={answers}
+                    csrf_token={csrf_token} />
+    );
   }
 }
 
 document.addEventListener('turbolinks:load', () => {
   const node = document.querySelector('#react-budget-form');
   if (node) {
-    const questions = node.dataset.questions;
+    const questions  = node.dataset.questions;
+    const client_id  = node.dataset.client_id;
+    const csrf_token = node.dataset.csrf_token;
 
     ReactDOM.render(
-      <BudgetForm questions={JSON.parse(questions)} />,
+      <BudgetForm questions={JSON.parse(questions)}
+                  client_id={client_id}
+                  csrf_token={csrf_token} />,
       node
     )
   }
