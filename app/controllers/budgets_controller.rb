@@ -8,6 +8,7 @@ class BudgetsController < ApplicationController
   end
 
   def show
+    @line_items = @budget.line_items
   end
 
   def new

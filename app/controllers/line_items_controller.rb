@@ -1,56 +1,58 @@
 class LineItemsController < ApplicationController
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
-  # GET /line_items
-  # GET /line_items.json
   def index
     @line_items = LineItem.all
   end
 
-  # GET /line_items/1
-  # GET /line_items/1.json
   def show
   end
 
-  # GET /line_items/new
   def new
     @line_item = LineItem.new
   end
 
-  # GET /line_items/1/edit
   def edit
   end
 
   def create
-    byebug
-    if budget_id = params[:budget][:id]
-      @budget = current_user.budgets.find budget_id
-    else
-      @budget = current_user.budgets.create!
-    end
-
-    @line_item = @budget.line_items.new
-    
-    
-    params[:budget][:answers]
-    params[:budget][:client_id]
-    params[:line_item][:price]
-
-    @line_item = LineItem.new(line_item_params)
-
-    respond_to do |format|
-      if @line_item.save
-        format.html { redirect_to @line_item.budget, notice: 'Linea de Presupuesto creada' }
-        format.json { render :show, status: :created, location: @line_item }
+    ActiveRecord::Base.transaction do
+      if params[:budget][:id].present?
+        @budget = current_user.budgets.find params[:budget][:id]
       else
-        format.html { render :new }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+        client = current_user.clients.find params[:budget][:client_id]
+        @budget = client.budgets.create!
+      end
+
+      @line_item = @budget.line_items.new
+      @line_item.price = params[:line_item][:price]
+      
+      description = ''
+
+      questions = Question.where(budget_type_id: params[:budget][:type_id]).order(:position)
+
+      questions.each_with_index do |question, index|
+        if question.choices.exists?
+          description << Choice.find(params[:budget][:answers][index]).translation
+        else
+          description << question.translation.gsub("<userinput>", params[:budget][:answers][index])
+        end
+      end
+
+      @line_item.description = description
+
+      respond_to do |format|
+        if @line_item.save
+          format.html { redirect_to @line_item.budget, notice: 'Linea de Presupuesto creada' }
+          format.json { render :show, status: :created, location: @line_item }
+        else
+          format.html { render :new }
+          format.json { render json: @line_item.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
 
-  # PATCH/PUT /line_items/1
-  # PATCH/PUT /line_items/1.json
   def update
     respond_to do |format|
       if @line_item.update(line_item_params)
@@ -63,8 +65,6 @@ class LineItemsController < ApplicationController
     end
   end
 
-  # DELETE /line_items/1
-  # DELETE /line_items/1.json
   def destroy
     @line_item.destroy
     respond_to do |format|
@@ -74,12 +74,10 @@ class LineItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_line_item
       @line_item = LineItem.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def line_item_params
       params.require(:line_item).permit(:description, :price, :budget_id)
     end

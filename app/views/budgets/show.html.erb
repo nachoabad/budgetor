@@ -1,9 +1,9 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Client:</strong>
   <%= @budget.client_id %>
 </p>
+
+<%= render 'line_items/index', line_items: @line_items %>
 
 <%= link_to 'Edit', edit_budget_path(@budget) %> |
 <%= link_to 'Back', budgets_path %>
