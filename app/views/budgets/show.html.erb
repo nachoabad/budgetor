@@ -1,9 +1,8 @@
 <p>
-  <strong>Client:</strong>
-  <%= @budget.client_id %>
+  <strong>Cliente:</strong>
+  <%= @budget.client.name %>
 </p>
 
 <%= render 'line_items/index', line_items: @line_items %>
 
-<%= link_to 'Edit', edit_budget_path(@budget) %> |
-<%= link_to 'Back', budgets_path %>
+<%= link_to 'Regresar', budgets_path %>

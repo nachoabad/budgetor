@@ -1,5 +1,4 @@
-<h1>New Line Item</h1>
-
-<%= render 'form', line_item: @line_item %>
-
-<%= link_to 'Back', line_items_path %>
+<div class="d-flex justify-content-center">
+  <%= render 'client_budget_type_form' unless @questions %>
+  <%= render 'react_budget_form'  if @questions %>
+</div>
