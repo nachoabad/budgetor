@@ -40,7 +40,7 @@ class LineItemsController < ApplicationController
         if question.choices.exists?
           description << Choice.find(params[:budget][:answers][index]).translation
         else
-          description << question.translation.gsub("<userinput>", params[:budget][:answers][index])
+          description << (question.translation.gsub("<userinput>", params[:budget][:answers][index]) + '. '
         end
       end
 
