@@ -7,16 +7,15 @@ class ProfilesController < ApplicationController
 
   def update
     if @user.update(user_params)
-        redirect_to @user, notice: 'Tu perfil se ha actualizado.'
-      else
-        render :edit
-      end
+      redirect_to edit_profile_path, notice: 'Tu perfil se ha actualizado.'
+    else
+      render :edit
     end
   end
 
   private
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :company_name, :phone)
+      params.require(:user).permit(:first_name, :last_name, :company_name, :phone, :email)
     end
 
     def set_user
