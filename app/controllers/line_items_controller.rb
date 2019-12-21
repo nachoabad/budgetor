@@ -40,7 +40,8 @@ class LineItemsController < ApplicationController
         if question.choices.exists?
           description << Choice.find(params[:budget][:answers][index]).translation
         else
-          description << (question.translation.gsub("<userinput>", params[:budget][:answers][index]) + '. ')
+          next if params[:budget][:answers][index] == '0'
+          description << (question.translation.gsub("<User Input>", params[:budget][:answers][index]) + '. ')
         end
       end
 
@@ -73,7 +74,7 @@ class LineItemsController < ApplicationController
   def destroy
     @line_item.destroy
     respond_to do |format|
-      format.html { redirect_to line_items_url, notice: 'Línea de presupuesto eliminada.' }
+      format.html { redirect_to budgets_url, notice: 'Línea de presupuesto eliminada.' }
       format.json { head :no_content }
     end
   end

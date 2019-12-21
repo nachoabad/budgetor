@@ -1,6 +1,26 @@
 <p>
-  <strong>Nombre:</strong>
+  <strong>Nombre de la Empresa:</strong>
   <%= @client.name %>
+</p>
+
+<p>
+  <strong>Nombres:</strong>
+  <%= @client.first_name %>
+</p>
+
+<p>
+  <strong>Apellidos:</strong>
+  <%= @client.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @client.email %>
+</p>
+
+<p>
+  <strong>Teléfono:</strong>
+  <%= @client.phone %>
 </p>
 
 <%= link_to 'Editar', edit_client_path(@client) %> |

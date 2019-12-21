@@ -12,8 +12,28 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.label :nombre %>
+    <%= form.label 'Nombre de la Empresa' %>
     <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label 'Nombres' %>
+    <%= form.text_field :first_name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label 'Apellidos' %>
+    <%= form.text_field :last_name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label 'Email' %>
+    <%= form.text_field :email, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label 'Teléfono' %>
+    <%= form.text_field :phone, class: 'form-control' %>
   </div>
 
   <%= form.submit 'Guardar', class: 'btn btn-lg btn-primary' %>
