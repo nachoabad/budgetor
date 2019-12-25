@@ -9,6 +9,7 @@ const BudgetForm = props => {
   const client_id   = props.client_id
   const budget_id   = props.budget_id
   const type_id     = props.type_id
+  const address     = props.address
   const csrf_token  = props.csrf_token
 
   const [answers, setAnswers]   = useState([]);

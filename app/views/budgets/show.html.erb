@@ -3,6 +3,12 @@
   <%= @budget.client.name %>
 </p>
 
+<p>
+  <strong>Dirección:</strong>
+  <%= @budget.address %>
+</p>
+
+
 <%= render 'line_items/index', line_items: @line_items %>
 
 <%= link_to 'Regresar', budgets_path %>

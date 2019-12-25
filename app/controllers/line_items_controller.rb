@@ -38,8 +38,8 @@ class LineItemsController < ApplicationController
 
       questions.each_with_index do |question, index|
         if question.choices.exists?
-          next unless params[:budget][:answers][index].translation.present?
-          description << (Choice.find(params[:budget][:answers][index]).translation + '. ')
+          next unless translation = Choice.find(params[:budget][:answers][index]).translation
+          description << (translation + '. ')
         else
           next if params[:budget][:answers][index] == '0'
           description << (question.translation.gsub("<User Input>", params[:budget][:answers][index]) + '. ')
