@@ -26,7 +26,7 @@ class LineItemsController < ApplicationController
         @budget = current_user.budgets.find params[:budget][:id]
       else
         client = current_user.clients.find params[:budget][:client_id]
-        @budget = client.budgets.create!
+        @budget = client.budgets.create! address: params[:budget][:address]
       end
 
       @line_item = @budget.line_items.new
@@ -38,7 +38,8 @@ class LineItemsController < ApplicationController
 
       questions.each_with_index do |question, index|
         if question.choices.exists?
-          description << Choice.find(params[:budget][:answers][index]).translation
+          next unless params[:budget][:answers][index].translation.present?
+          description << (Choice.find(params[:budget][:answers][index]).translation + '. ')
         else
           next if params[:budget][:answers][index] == '0'
           description << (question.translation.gsub("<User Input>", params[:budget][:answers][index]) + '. ')

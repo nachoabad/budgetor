@@ -15,6 +15,7 @@ function Confirmation(props) {
         <input type='hidden' name='authenticity_token' value={props.csrf_token}></input>
         <input type='hidden' name='budget[client_id]' value={props.client_id} />
         <input type='hidden' name='budget[type_id]' value={props.type_id} />
+        <input type='hidden' name='budget[address]' value={props.address} />
         <input type='hidden' name='budget[id]' value={props.budget_id} />
         <div className='form-group'>
           <input  type='text' 

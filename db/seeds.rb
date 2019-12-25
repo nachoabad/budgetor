@@ -36,9 +36,9 @@ if Rails.env.production?
                         budget_type: techo_reparacion
 
   q = Question.create!  position: 3, name: 'Se reemplazó papel?', budget_type: techo_reparacion
-      Choice.create! name: 'Normal', translation: 'Replaced the felt underlayment as required.', position: 1, question: q
-      Choice.create! name: 'Sintético', translation: 'Replaced synthetic underlayment as required.', position: 2, question: q
-      Choice.create! name: 'Ninguno', translation: 'No underlayment replaced', position: 2, question: q
+      Choice.create! name: 'Normal', translation: 'Replaced the felt underlayment as required', position: 1, question: q
+      Choice.create! name: 'Sintético', translation: 'Replaced synthetic underlayment as required', position: 2, question: q
+      Choice.create! name: 'No', position: 2, question: q
 
   q = Question.create!  position: 4, 
                         name: 'Cuántos pies cuadrados de decking se reemplazó?',
@@ -52,12 +52,12 @@ if Rails.env.production?
       
   q = Question.create!  position: 6, 
                         name: 'Cuántos pipas se reemplazaron?',
-                        translation: 'Replaced <User Input> pipes and/or roof jacks as required. Sealed properly to prevent water intrusion',
+                        translation: 'Replaced <User Input> pipe(s) and/or roof jack(s) as required. Sealed properly to prevent water intrusion',
                         budget_type: techo_reparacion
       
   q = Question.create!  position: 7, 
                         name: 'Cuántas ventanillas se reemplazaron?',
-                        translation: 'Replaced <User Input> vents as required. Sealed properly to prevent any water intrusion',
+                        translation: 'Replaced <User Input> vent(s) as required. Sealed properly to prevent any water intrusion',
                         budget_type: techo_reparacion
       
 end

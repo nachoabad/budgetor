@@ -13,7 +13,9 @@ class BudgetsController < ApplicationController
 
   def new
     @budget = current_user.budgets.new
-    @client_id, budget_type_id = params[:client], params[:budget_type]
+    @client_id = params[:client]
+    @address = params[:address]
+    budget_type_id = params[:budget_type]
     
     if @client_id && budget_type_id
       @budget_type = BudgetType.find budget_type_id
@@ -68,6 +70,6 @@ class BudgetsController < ApplicationController
     end
 
     def budget_params
-      params.require(:budget).permit(:client_id, :answers)
+      params.require(:budget).permit(:address, :client_id, :answers)
     end
 end

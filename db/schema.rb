@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2019_12_18_201617) do
   end
 
   create_table "budgets", force: :cascade do |t|
+    t.string "address"
     t.bigint "client_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

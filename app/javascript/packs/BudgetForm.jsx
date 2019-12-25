@@ -49,6 +49,7 @@ const BudgetForm = props => {
                     budget_id={budget_id}
                     questions={questions}
                     answers={answers}
+                    address={address}
                     csrf_token={csrf_token} />
     );
   }
@@ -61,6 +62,7 @@ document.addEventListener('turbolinks:load', () => {
     const client_id  = node.dataset.client_id;
     const budget_id  = node.dataset.budget_id;
     const type_id    = node.dataset.type_id;
+    const address    = node.dataset.address;
     const csrf_token = node.dataset.csrf_token;
 
     ReactDOM.render(
@@ -68,6 +70,7 @@ document.addEventListener('turbolinks:load', () => {
                   client_id={client_id}
                   budget_id={budget_id}
                   type_id={type_id}
+                  address={address}
                   csrf_token={csrf_token} />,
       node
     )
