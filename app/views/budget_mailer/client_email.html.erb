@@ -16,7 +16,7 @@
       </thead>
 
       <tbody>
-        <% line_items.each do |line_item| %>
+        <% @budget.line_items.each do |line_item| %>
           <tr>
             <td><%= line_item.description %></td>
             <td><%= number_to_currency line_item.price %></td>
