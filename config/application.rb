@@ -19,5 +19,12 @@ module Budgetor
     # the framework and any gems in your application.
 
     config.app_generators.scaffold_controller = :scaffold_controller
+
+    config.action_mailer.delivery_method = :mailgun
+    config.action_mailer.mailgun_settings = {
+      api_key: Rails.application.credentials.mail[:api_key],
+      # domain: 'mydomain.com',
+      # api_host: 'api.eu.mailgun.net'  # Uncomment this line for EU region domains
+    }
   end
 end
