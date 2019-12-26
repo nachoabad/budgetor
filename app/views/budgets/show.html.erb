@@ -11,4 +11,4 @@
 
 <%= render 'line_items/index', line_items: @line_items %>
 
-<%= link_to 'Regresar', budgets_path %>
+<%= link_to 'Enviar Estimado', email_budget_path(@budget), class: 'btn btn-primary' %>

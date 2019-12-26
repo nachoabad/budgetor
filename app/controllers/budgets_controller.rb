@@ -1,6 +1,6 @@
 class BudgetsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_budget, only: [:show, :edit, :update, :destroy]
+  before_action :set_budget, only: [:show, :email, :edit, :update, :destroy]
   before_action :set_clients, only: [:new, :edit]
 
   def index
@@ -9,6 +9,12 @@ class BudgetsController < ApplicationController
 
   def show
     @line_items = @budget.line_items
+  end
+
+  def email
+    BudgetMailer.with(budget: @budget).client_email.deliver_later
+
+    redirect_to @budget, notice: 'Estimado enviado al cliente'
   end
 
   def new
