@@ -4,7 +4,26 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>New Estimate:</h1>
-    <%= render 'line_items/index', line_items: @budget.line_items %>
+    <h1>New Estimate from <%= @budget.user.company_name %></h1>
+    <h3>Address: <%= @budget.address %>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Line Item</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% line_items.each do |line_item| %>
+          <tr>
+            <td><%= line_item.description %></td>
+            <td><%= number_to_currency line_item.price %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
   </body>
 </html>
