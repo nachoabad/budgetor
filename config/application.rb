@@ -22,7 +22,7 @@ module Budgetor
 
     config.action_mailer.delivery_method = :mailgun
     config.action_mailer.mailgun_settings = {
-      api_key: Rails.application.credentials.mail[:api_key],
+      api_key: Rails.application.credentials.mailgun[:api_key],
       # domain: 'mydomain.com',
       # api_host: 'api.eu.mailgun.net'  # Uncomment this line for EU region domains
     }
