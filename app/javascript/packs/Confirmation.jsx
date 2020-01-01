@@ -26,7 +26,7 @@ function Confirmation(props) {
                   onChange={handlePrice} 
                   required/>
         </div>
-        <input type="submit" className='btn btn-primary ' value='Agregar Línea de Presupuesto' />
+        <input type="submit" className='btn btn-primary ' value='Agregar Línea de Estimado' />
       </form>
     </div>
   );
