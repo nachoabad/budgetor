@@ -14,14 +14,14 @@
       </div>
     </div>
     <div style='display: flex;justify-content:space-between;'>
-      <div>
+      <div style='width:50%'>
         <h2><%= @budget.client.name %></h2>
         <%= @budget.client.full_name %><br>
         <%= @budget.client.email %><br>
         <%= @budget.client.phone %></p>
       </div>
-      <div>
-        <table border='1'>
+      <div style='width:50%;'>
+        <table border='1' style='float:right;'>
           <tbody>
             <tr>
               <td>Estimate #</td>
@@ -54,7 +54,7 @@
     </table>
 
     <div style='display: flex;justify-content:flex-end;'>
-      <table border='1'>
+      <table border='1' style='float:right;'>
         <tbody>
           <tr>
             <td>Sub Total #</td>
