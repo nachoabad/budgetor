@@ -7,4 +7,8 @@ class User < ApplicationRecord
   has_many :clients, dependent: :destroy
   has_many :budgets, through: :clients
   has_many :line_items, through: :budgets
+
+  def full_name
+    first_name + ' ' + last_name
+  end
 end

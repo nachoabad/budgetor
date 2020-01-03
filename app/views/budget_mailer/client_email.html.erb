@@ -4,18 +4,45 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>New Estimate from <%= @budget.client.user.company_name %></h1>
-    <h3>Estimate Number: <%= @budget.id %>
-    <h3>Address: <%= @budget.address %>
+    <h1 style='text-align: center;'>Estimate</h1>
+    <div style='display: flex;justify-content:flex-start;'>
+      <div>
+        <h2><%= @budget.client.user.company_name %></h2>
+        <%= @budget.client.user.full_name %><br>
+        <%= @budget.client.user.email %><br>
+        <%= @budget.client.user.phone %></p>
+      </div>
+    </div>
+    <div style='display: flex;justify-content:space-between;'>
+      <div>
+        <h2><%= @budget.client.name %></h2>
+        <%= @budget.client.full_name %><br>
+        <%= @budget.client.email %><br>
+        <%= @budget.client.phone %></p>
+      </div>
+      <div>
+        <table border='1'>
+          <tbody>
+            <tr>
+              <td>Estimate #</td>
+              <td><%= @budget.id %></td>
+            </tr>
+            <tr>
+              <td>Date</td>
+              <td><%= @budget.created_at.to_date %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-    <table>
+    <table border='1' style='margin:20px 0px;'>
       <thead>
         <tr>
           <th>Line Item</th>
           <th>Price</th>
         </tr>
       </thead>
-
       <tbody>
         <% @budget.line_items.each do |line_item| %>
           <tr>
@@ -26,5 +53,19 @@
       </tbody>
     </table>
 
+    <div style='display: flex;justify-content:flex-end;'>
+      <table border='1'>
+        <tbody>
+          <tr>
+            <td>Sub Total #</td>
+            <td><%= number_to_currency @budget.line_items.sum(:price) %></td>
+          </tr>
+          <tr>
+            <td>Total</td>
+            <td><%= number_to_currency @budget.line_items.sum(:price) %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </body>
 </html>
