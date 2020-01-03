@@ -53,19 +53,21 @@
       </tbody>
     </table>
 
-    <div style='display: flex;justify-content:flex-end;'>
-      <table border='1' style='float:right;'>
-        <tbody>
-          <tr>
-            <td>Sub Total #</td>
-            <td><%= number_to_currency @budget.line_items.sum(:price) %></td>
-          </tr>
-          <tr>
-            <td>Total</td>
-            <td><%= number_to_currency @budget.line_items.sum(:price) %></td>
-          </tr>
-        </tbody>
-      </table>
+    <div style='display:flex;justify-content:flex-end;'>
+      <div style='width:100%;'>
+        <table border='1' style='float:right;'>
+          <tbody>
+            <tr>
+              <td>Sub Total #</td>
+              <td><%= number_to_currency @budget.line_items.sum(:price) %></td>
+            </tr>
+            <tr>
+              <td>Total</td>
+              <td><%= number_to_currency @budget.line_items.sum(:price) %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </body>
 </html>
