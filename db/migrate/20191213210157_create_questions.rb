@@ -4,7 +4,7 @@ class CreateQuestions < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :translation
       t.integer :position
-      t.references :budget_type, null: false, foreign_key: true
+      t.references :work_type, null: false, foreign_key: true
 
       t.timestamps
     end

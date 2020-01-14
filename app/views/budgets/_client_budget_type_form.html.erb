@@ -3,7 +3,7 @@
     <%= select_tag "client", options_from_collection_for_select(current_user.clients.all, "id", "name"), prompt: "Selecciona Cliente", class: 'form-control', required: true %>
   </div>
   <div class="form-group">
-    <%= select_tag "budget_type", options_from_collection_for_select(BudgetType.all, "id", "name"), prompt: "Selecciona Tipo de Estimado", class: 'form-control', required: true %>
+    <%= select_tag "work_type", options_from_collection_for_select(WorkType.all, "id", "name"), prompt: "Selecciona Tipo de Estimado", class: 'form-control', required: true %>
   </div>
   <div class="form-group">
     <%= text_field_tag "address", nil, placeholder: "Dirección del estimado", class: 'form-control', required: true %>

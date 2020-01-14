@@ -7,7 +7,7 @@
     <%= hidden_field_tag 'budget', @budget.id %>
   <% end %>
   <div class="form-group">
-    <%= select_tag "budget_type", options_from_collection_for_select(BudgetType.all, "id", "name"), prompt: "Selecciona Tipo de Estimado", class: 'form-control', required: true %>
+    <%= select_tag "work_type", options_from_collection_for_select(WorkType.all, "id", "name"), prompt: "Selecciona Tipo de Estimado", class: 'form-control', required: true %>
   </div>
   <%= submit_tag "Crear Estimado", class: 'btn btn-lg btn-block btn-primary' %>
 <% end %>

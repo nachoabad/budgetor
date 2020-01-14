@@ -15,7 +15,7 @@ class QuestionsTest < ApplicationSystemTestCase
     click_on "New Question"
 
     fill_in "Position", with: @question.position
-    fill_in "BudgetType", with: @question.budget_type_id
+    fill_in "WorkType", with: @question.work_type_id
     fill_in "name", with: @question.name
     click_on "Create Question"
 
@@ -28,7 +28,7 @@ class QuestionsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Position", with: @question.position
-    fill_in "BudgetType", with: @question.budget_type_id
+    fill_in "WorkType", with: @question.work_type_id
     fill_in "name", with: @question.name
     click_on "Update Question"
 

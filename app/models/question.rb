@@ -1,5 +1,5 @@
 class Question < ApplicationRecord
-  belongs_to :budget_type
+  belongs_to :work_type
   has_many :choices, dependent: :destroy
 
   default_scope {order :position}

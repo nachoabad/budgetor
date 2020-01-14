@@ -3,9 +3,9 @@
 one:
   name: MyString
   position: 1
-  budget_type: one
+  work_type: one
 
 two:
   name: MyString
   position: 2
-  budget_type: two
+  work_type: two

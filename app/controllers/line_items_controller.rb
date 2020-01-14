@@ -11,9 +11,9 @@ class LineItemsController < ApplicationController
   def new
     @budget = current_user.budgets.find params[:budget]
 
-    if @budget_type_id = params[:budget_type]
-      @budget_type = BudgetType.find params[:budget_type]
-      @questions = @budget_type.questions.to_json(include: :choices)
+    if @work_type_id = params[:work_type]
+      @work_type = WorkType.find params[:work_type]
+      @questions = @work_type.questions.to_json(include: :choices)
     end
   end
 
@@ -34,7 +34,7 @@ class LineItemsController < ApplicationController
       
       description = ''
 
-      questions = Question.where(budget_type_id: params[:budget][:type_id]).order(:position)
+      questions = Question.where(work_type_id: params[:budget][:type_id]).order(:position)
 
       questions.each_with_index do |question, index|
         if question.choices.exists?
@@ -50,7 +50,7 @@ class LineItemsController < ApplicationController
 
       respond_to do |format|
         if @line_item.save
-          format.html { redirect_to @line_item.budget, notice: 'Línea de Estimado creada' }
+          format.html { redirect_to @line_item.line_itemable, notice: 'Línea de Estimado creada' }
           format.json { render :show, status: :created, location: @line_item }
         else
           format.html { render :new }

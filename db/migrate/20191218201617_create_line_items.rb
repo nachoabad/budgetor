@@ -3,7 +3,7 @@ class CreateLineItems < ActiveRecord::Migration[6.0]
     create_table :line_items do |t|
       t.text :description
       t.decimal :price
-      t.references :budget, null: false, foreign_key: true
+      t.references :line_itemable, polymorphic: true
 
       t.timestamps
     end

@@ -2,47 +2,47 @@ require 'test_helper'
 
 class BudgetTypesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @budget_type = budget_types(:one)
+    @work_type = work_types(:one)
   end
 
   test "should get index" do
-    get budget_types_url
+    get work_types_url
     assert_response :success
   end
 
   test "should get new" do
-    get new_budget_type_url
+    get new_work_type_url
     assert_response :success
   end
 
-  test "should create budget_type" do
-    assert_difference('BudgetType.count') do
-      post budget_types_url, params: { budget_type: { name: @budget_type.name } }
+  test "should create work_type" do
+    assert_difference('WorkType.count') do
+      post work_types_url, params: { work_type: { name: @work_type.name } }
     end
 
-    assert_redirected_to budget_type_url(BudgetType.last)
+    assert_redirected_to work_type_url(WorkType.last)
   end
 
-  test "should show budget_type" do
-    get budget_type_url(@budget_type)
+  test "should show work_type" do
+    get work_type_url(@work_type)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_budget_type_url(@budget_type)
+    get edit_work_type_url(@work_type)
     assert_response :success
   end
 
-  test "should update budget_type" do
-    patch budget_type_url(@budget_type), params: { budget_type: { name: @budget_type.name } }
-    assert_redirected_to budget_type_url(@budget_type)
+  test "should update work_type" do
+    patch work_type_url(@work_type), params: { work_type: { name: @work_type.name } }
+    assert_redirected_to work_type_url(@work_type)
   end
 
-  test "should destroy budget_type" do
-    assert_difference('BudgetType.count', -1) do
-      delete budget_type_url(@budget_type)
+  test "should destroy work_type" do
+    assert_difference('WorkType.count', -1) do
+      delete work_type_url(@work_type)
     end
 
-    assert_redirected_to budget_types_url
+    assert_redirected_to work_types_url
   end
 end
