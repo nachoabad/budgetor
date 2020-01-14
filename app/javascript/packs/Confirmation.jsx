@@ -13,10 +13,11 @@ function Confirmation(props) {
       <form className='form-width-400' action='/line_items' method='post'>
         <Answers answers={props.answers} />
         <input type='hidden' name='authenticity_token' value={props.csrf_token}></input>
-        <input type='hidden' name='budget[client_id]' value={props.client_id} />
-        <input type='hidden' name='budget[type_id]' value={props.type_id} />
-        <input type='hidden' name='budget[address]' value={props.address} />
-        <input type='hidden' name='budget[id]' value={props.budget_id} />
+        <input type='hidden' name='line_itemable[client_id]' value={props.client_id} />
+        <input type='hidden' name='line_itemable[work_type_id]' value={props.work_type_id} />
+        <input type='hidden' name='line_itemable[address]' value={props.address} />
+        <input type='hidden' name='line_itemable[id]' value={props.line_itemable_id} />
+        <input type='hidden' name='line_itemable[type]' value={props.line_itemable_type} />
         <div className='form-group'>
           <input  type='text' 
                   name='line_item[price]'

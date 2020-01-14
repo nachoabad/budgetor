@@ -1,4 +1,7 @@
 <div class="d-flex justify-content-center">
-  <%= render 'client_work_type_form' unless @questions %>
-  <%= render 'react_budget_form'  if @questions %>
+  <% if @questions %>
+    <%= render 'react_line_item_form' %>
+  <% else %>
+    <%= render 'client_work_type_form' %>
+  <% end %>
 </div>

@@ -1,6 +1,7 @@
 <div class="d-flex justify-content-between">
-  <h3>Estimado Número: <%= @budget.id %></h3>
-  <%= link_to 'Nueva Linea', new_line_item_path(budget: @budget.id) %>
+  <h3>Número de documento: <%= line_itemable.id %></h3>
+  <%= link_to 'Nueva Linea', new_line_item_path(line_itemable_id: line_itemable.id, 
+                                                line_itemable_type: line_itemable.class) %>
 </div>
 
 <div class="table-responsive">

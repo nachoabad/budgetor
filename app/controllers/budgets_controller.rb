@@ -16,22 +16,7 @@ class BudgetsController < ApplicationController
 
     redirect_to @budget, notice: 'Estimado enviado al cliente'
   end
-
-  def new
-    @budget = current_user.budgets.new
-    @client_id = params[:client]
-    @address = params[:address]
-    work_type_id = params[:work_type]
-    
-    if @client_id && work_type_id
-      @work_type = WorkType.find work_type_id
-      @questions = @work_type.questions.to_json(include: :choices)
-    end
-  end
-  
-  def edit
-  end
-  
+ 
   def create
     @budget = current_user.budgets.new(budget_params)
 

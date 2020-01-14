@@ -1,8 +1,10 @@
 <div  id='react-budget-form' 
+      data-work_type_id='<%= @work_type.id %>'
       data-questions='<%= @questions %>'
+      data-line_itemable_id='<%= @line_itemable.try :id %>'
+      data-line_itemable_type='<%= @line_itemable_type %>'
       data-client_id='<%= @client_id %>'
-      data-budget_id='<%= @budget.id %>'
-      data-type_id='<%= @work_type.id %>'
+      data-address='<%= @address %>'
       data-csrf_token='<%= session[:_csrf_token] %>'
       class='text-center mt-3'>
 </div>

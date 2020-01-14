@@ -9,40 +9,50 @@ class LineItemsController < ApplicationController
   end
 
   def new
-    @budget = current_user.budgets.find params[:budget]
-
-    if @work_type_id = params[:work_type]
+    @line_itemable_type = params[:line_itemable_type]
+    
+    if line_itemable_id = params[:line_itemable_id]
+      klass = params[:line_itemable_type].constantize
+      @line_itemable = klass.find line_itemable_id
+      @client_id = @line_itemable.client.id
+      @work_type = WorkType.find params[:work_type] if params[:work_type].present?
+    else
+      @client_id = params[:client]
+      @address = params[:address]
       @work_type = WorkType.find params[:work_type]
-      @questions = @work_type.questions.to_json(include: :choices)
     end
+
+    @questions = @work_type.questions.to_json(include: :choices) if @work_type
   end
 
   def edit
   end
 
   def create
+    line_itemable_type = params[:line_itemable][:type].pluralize.downcase
+
     ActiveRecord::Base.transaction do
-      if params[:budget][:id].present?
-        @budget = current_user.budgets.find params[:budget][:id]
+      if params[:line_itemable][:id].present?
+        @line_itemable = eval("current_user.#{line_itemable_type}.find params[:line_itemable][:id]")
       else
-        client = current_user.clients.find params[:budget][:client_id]
-        @budget = client.budgets.create! address: params[:budget][:address]
+        client = current_user.clients.find params[:line_itemable][:client_id]
+        @line_itemable = eval("client.#{line_itemable_type}.create! address: params[:line_itemable][:address]")
       end
 
-      @line_item = @budget.line_items.new
+      @line_item = @line_itemable.line_items.new
       @line_item.price = params[:line_item][:price]
       
       description = ''
 
-      questions = Question.where(work_type_id: params[:budget][:type_id]).order(:position)
+      questions = Question.where(work_type_id: params[:line_itemable][:work_type_id]).order(:position)
 
       questions.each_with_index do |question, index|
         if question.choices.exists?
-          next unless translation = Choice.find(params[:budget][:answers][index]).translation
+          next unless translation = Choice.find(params[:line_itemable][:answers][index]).translation
           description << (translation + '. ')
         else
-          next if params[:budget][:answers][index] == '0'
-          description << (question.translation.gsub("<User Input>", params[:budget][:answers][index]) + '. ')
+          next if params[:line_itemable][:answers][index] == '0'
+          description << (question.translation.gsub("<User Input>", params[:line_itemable][:answers][index]) + '. ')
         end
       end
 
