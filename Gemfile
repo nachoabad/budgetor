@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'activeadmin', '~> 2.5'
 gem 'mailgun-ruby', '~>1.1.6'
+gem 'wicked_pdf', '~> 1.4'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -51,6 +52,10 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+end
+
+group :production do
+  gem 'wkhtmltopdf-heroku', '~> 2.12', '>= 2.12.5.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
