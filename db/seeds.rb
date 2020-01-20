@@ -109,7 +109,7 @@ if Rails.env.production?
                         work_type: techo_completo
 
   q = Question.create!  position: 10, name: 'Se instaló ice shield?', work_type: techo_completo
-                        Choice.create! name: 'Sí', translation: 'Installled ice shield around vents to seal and protect properly.', position: 1, question: q
+                        Choice.create! name: 'Sí', translation: 'Installled ice shield around vents to seal and protect properly', position: 1, question: q
                         Choice.create! name: 'No', position: 2, question: q
 
   q = Question.create!  position: 11,
