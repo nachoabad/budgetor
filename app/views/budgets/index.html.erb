@@ -16,7 +16,7 @@
     <tbody>
       <% @budgets.each do |budget| %>
         <tr>
-          <td><%= budget.updated_at.to_date %></td>
+          <td><%= l budget.updated_at.to_date %></td>
           <td><%= budget.client.name %></td>
           <td><%= link_to 'Ver', budget %></td>
           <td><%= link_to 'Editar', edit_budget_path(budget) %></td>

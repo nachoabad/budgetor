@@ -11,6 +11,6 @@ es:
               blank: no puede estar vacía
             password_confirmation:
               confirmation: no coincide las confirmación de clave
-  time:
+  date:
     formats:
-      long: "%d/%m/%Y"
+      default: "%m/%d/%Y"

@@ -16,7 +16,7 @@
     <tbody>
       <% @invoices.each do |invoice| %>
         <tr>
-          <td><%= invoice.updated_at.to_date %></td>
+          <td><%= l invoice.updated_at.to_date %></td>
           <td><%= invoice.client.name %></td>
           <td><%= link_to 'Ver', invoice %></td>
           <td><%= link_to 'Editar', edit_invoice_path(invoice) %></td>
