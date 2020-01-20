@@ -38,7 +38,7 @@ if Rails.env.production?
   q = Question.create!  position: 3, name: 'Se reemplazó papel?', work_type: techo_reparacion
       Choice.create! name: 'Normal', translation: 'Replaced the felt underlayment as required', position: 1, question: q
       Choice.create! name: 'Sintético', translation: 'Replaced synthetic underlayment as required', position: 2, question: q
-      Choice.create! name: 'No', position: 2, question: q
+      Choice.create! name: 'No', position: 3, question: q
 
   q = Question.create!  position: 4, 
                         name: 'Cuántos pies cuadrados de decking se reemplazó?',
@@ -59,5 +59,66 @@ if Rails.env.production?
                         name: 'Cuántas ventanillas se reemplazaron?',
                         translation: 'Replaced <User Input> vent(s) as required. Sealed properly to prevent any water intrusion',
                         work_type: techo_reparacion
-      
+
+  #############
+
+  techo_completo =  WorkType.create! name: 'Techo Completo'
+
+  q = Question.create!  position: 1, name: 'Teja de shingle (asfalto)', work_type: techo_completo
+      Choice.create! name: '25 años', translation: '3-Tab Asphalt Shingle Roof Work', position: 1, question: q
+      Choice.create! name: '30 años', translation: 'Dimensional Asphalt Shingle Roof Work', position: 2, question: q
+
+  q = Question.create!  position: 2,
+                        name: 'Cuántas escuadras?',
+                        translation: 'Installed <User Input> squares of asphalt shingle roof. Installed same area of new underlayment as required. All new materials were sealed properly.',
+                        work_type: techo_completo
+
+  q = Question.create!  position: 3,
+                        name: 'Cuántos pies de Ridge Vent nuevo se hicieron?',
+                        translation: 'Sawed <User Input> plywood decking peak to create new vent and installed new ridgevent.',
+                        work_type: techo_completo
+
+  q = Question.create!  position: 4,
+                        name: 'Cuántos pies de Ridge se cambiaron?',
+                        translation: 'Removed and replaced <User Input> linear feet of ridge vent with new.',
+                        work_type: techo_completo
+
+  q = Question.create!  position: 5,
+                        name: 'Cuántos pies de Ridge se instalaron?',
+                        translation: 'Installed <User Input> linear feet or ridge.',
+                        work_type: techo_completo
+
+  q = Question.create!  position: 6, name: 'Se usó papel normal o sintético?', work_type: techo_completo
+                        Choice.create! name: 'Normal', translation: 'Installed new felt underlayment.', position: 1, question: q
+                        Choice.create! name: 'Sintético', translation: 'Installed new synthetic underlayment.', position: 2, question: q
+                        Choice.create! name: 'Ninguno', position: 3, question: q
+
+  q = Question.create!  position: 7,
+                        name: 'Cuánto flashing?',
+                        translation: 'Installed <User Input> linear feet of new flashing.',
+                        work_type: techo_completo
+
+  q = Question.create!  position: 8,
+                        name: 'Cuántas pipas se cambiaron?',
+                        translation: 'Installed <User Input> new pipes and/or roof jacks, all sealed properly to prevent water intrusion.',
+                        work_type: techo_completo
+
+  q = Question.create!  position: 9,
+                        name: 'Cuántas ventilas se cambiaron?',
+                        translation: 'Installed <User Input> roof vents, all sealed properly to prevent water intrusion.',
+                        work_type: techo_completo
+
+  q = Question.create!  position: 10, name: 'Se instaló ice shield?', work_type: techo_completo
+                        Choice.create! name: 'Sí', translation: 'Installled ice shield around vents to seal and protect properly.', position: 1, question: q
+                        Choice.create! name: 'No', position: 2, question: q
+
+  q = Question.create!  position: 11,
+                        name: 'Cuántos pies de drip edge se instalaron?',
+                        translation: 'Installed <User Input> linear feet of drip edge as required.',
+                        work_type: techo_completo
+
+  q = Question.create!  position: 12,
+                        name: 'Cuántos pies de decking se cambiaron?',
+                        translation: 'Installed <User Input> of new decking as required to install new roofing materials properly.',
+                        work_type: techo_completo
 end
