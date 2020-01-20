@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1 style='text-align: center;'>Estimate</h1>
+    <div style='display: flex;justify-content:flex-start;'>
+      <div>
+        <h2><%= @invoice.client.user.company_name %></h2>
+        <%= @invoice.client.user.full_name %><br>
+        <%= @invoice.client.user.email %><br>
+        <%= @invoice.client.user.phone %></p>
+      </div>
+    </div>
+    <div style='display: flex;justify-content:space-between;'>
+      <div style='width:40%'>
+        <h2><%= @invoice.client.name %></h2>
+        <%= @invoice.client.full_name %><br>
+        <%= @invoice.client.email %><br>
+        <%= @invoice.client.phone %></p>
+      </div>
+      <div style='width:60%;'>
+        <table border='1' style='float:right;'>
+          <tbody>
+            <tr>
+              <td>Invoice #</td>
+              <td><%= @invoice.id %></td>
+            </tr>
+            <tr>
+              <td>Purchase Order</td>
+              <td><%= @invoice.purchase_order %></td>
+            </tr>
+            <tr>
+              <td>Date</td>
+              <td><%= @invoice.created_at.to_date %></td>
+            </tr>
+            <tr>
+              <td>Address</td>
+              <td><%= @invoice.address %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <table border='1' style='margin:20px 0px;'>
+      <thead>
+        <tr>
+          <th>Line Item</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @invoice.line_items.each do |line_item| %>
+          <tr>
+            <td><%= line_item.description %></td>
+            <td><%= number_to_currency line_item.price %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div style='display:flex;justify-content:flex-end;'>
+      <div style='width:100%;'>
+        <table border='1' style='float:right;'>
+          <tbody>
+            <tr>
+              <td>Sub Total #</td>
+              <td><%= number_to_currency @invoice.line_items.sum(:price) %></td>
+            </tr>
+            <tr>
+              <td>Total</td>
+              <td><%= number_to_currency @invoice.line_items.sum(:price) %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

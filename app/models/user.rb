@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :clients, dependent: :destroy
   has_many :budgets, through: :clients
+  has_many :invoices, through: :clients
+  #TODO: Add Invoice
   has_many :line_items, through: :budgets
 
   def full_name

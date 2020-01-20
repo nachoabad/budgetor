@@ -1,32 +1,17 @@
-<%= form_with(model: invoice, local: true) do |form| %>
-  <% if invoice.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
-
-      <ul>
-        <% invoice.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
+<%= form_with(model: invoice, local: true, html: {class: 'form-width-400'}) do |form| %>
+  <div class="form-group">
+    <%= form.select :client_id, options_from_collection_for_select(current_user.clients.all, "id", "name"), {prompt: "Selecciona Cliente"}, {class: 'form-control', required: true} %>
   </div>
 
-  <div class="field">
-    <%= form.label :purchase_order %>
-    <%= form.text_field :purchase_order %>
+  <div class="form-group">
+    <%= form.text_field :address, class: 'form-control', placeholder: 'Dirección del Trabajo', required: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :client_id %>
-    <%= form.text_field :client_id %>
+  <div class="form-group">
+    <%= form.text_field :purchase_order, class: 'form-control', placeholder: 'Purchase Order', required: true %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Guardar Factura', class: 'btn btn-lg btn-block btn-primary' %>
   </div>
 <% end %>

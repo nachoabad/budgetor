@@ -1,6 +1,6 @@
 class BudgetsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_budget, only: [:show, :email, :edit, :update, :destroy]
+  before_action :set_budget, only: [:show, :email, :invoice, :edit, :update, :destroy]
   before_action :set_clients, only: [:new, :edit]
 
   def index
@@ -16,13 +16,27 @@ class BudgetsController < ApplicationController
 
     redirect_to @budget, notice: 'Estimado enviado al cliente'
   end
+
+  def invoice
+    invoice = Invoice.new @budget.attributes.slice('address', 'client_id')
+    invoice.line_items.build @budget.line_items.map(&:attributes).map {|li| li.slice('description', 'price')}
+    if invoice.save
+      redirect_to invoice, notice: 'Estimado convertido en Factura'
+    else
+      render :show
+    end
+  end
+  
+  def new
+    @budget = current_user.budgets.new
+  end
  
   def create
     @budget = current_user.budgets.new(budget_params)
 
     respond_to do |format|
       if @budget.save
-        format.html { redirect_to @budget, notice: 'Budget was successfully created.' }
+        format.html { redirect_to new_line_item_url(line_itemable_id: @budget.id, line_itemable_type: Budget) }
         format.json { render :show, status: :created, location: @budget }
       else
         format.html { render :new }
@@ -61,6 +75,6 @@ class BudgetsController < ApplicationController
     end
 
     def budget_params
-      params.require(:budget).permit(:address, :client_id, :answers)
+      params.require(:budget).permit(:address, :client_id)
     end
 end

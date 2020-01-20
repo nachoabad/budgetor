@@ -11,4 +11,7 @@
 
 <%= render 'line_items/index', line_items: @line_items, line_itemable: @budget %>
 
-<%= link_to 'Enviar Estimado', email_budget_path(@budget), class: 'btn btn-primary' %>
+<div class="d-inline-flex flex-column">
+  <%= link_to 'Enviar Estimado',      email_budget_path(@budget),   class: 'btn btn-primary mt-2' %>
+  <%= link_to 'Convertir en Factura', invoice_budget_path(@budget), class: 'btn btn-primary mt-3' %>
+</div>

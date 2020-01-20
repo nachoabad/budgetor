@@ -1,19 +1,19 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Address:</strong>
-  <%= @invoice.address %>
+  <strong>Cliente:</strong>
+  <%= @invoice.client.name %>
 </p>
 
 <p>
-  <strong>Purchase order:</strong>
+  <strong>Purchase Order/Orden de Compra:</strong>
   <%= @invoice.purchase_order %>
 </p>
 
 <p>
-  <strong>Client:</strong>
-  <%= @invoice.client_id %>
+  <strong>Dirección:</strong>
+  <%= @invoice.address %>
 </p>
 
-<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-<%= link_to 'Back', invoices_path %>
+
+<%= render 'line_items/index', line_items: @line_items, line_itemable: @invoice %>
+
+<%= link_to 'Enviar Factura', email_invoice_path(@invoice), class: 'btn btn-primary' %>
