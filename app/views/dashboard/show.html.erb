@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-between">
+  <h3>Dashboard</h3>
+</div>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Status</th>
+        <th>Tipo</th>
+        <th>Fecha</th>
+        <th>Cliente</th>
+        <th colspan="1"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @docs.each do |doc| %>
+        <tr>
+          <td><%= status_button %></td>
+          <td><%= doc.class.name == 'Budget' ? 'Estimado' : 'Factura' %></td>
+          <td><%= l doc.updated_at.to_date %></td>
+          <td><%= doc.client.name %></td>
+          <td><%= link_to 'Ver', doc %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

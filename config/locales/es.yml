@@ -13,4 +13,4 @@ es:
               confirmation: no coincide las confirmación de clave
   date:
     formats:
-      default: "%m/%d/%Y"
+      default: "%m/%d/%y"
