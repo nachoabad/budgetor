@@ -13,5 +13,5 @@
 
 <div class="d-inline-flex flex-column">
   <%= link_to 'Enviar Estimado',      email_budget_path(@budget),   class: 'btn btn-primary mt-2' %>
-  <%= link_to 'Convertir en Factura', invoice_budget_path(@budget), class: 'btn btn-primary mt-3' %>
+  <%= link_to 'Convertir en Factura', new_budget_budget_convertor_path(@budget), class: 'btn btn-primary mt-3' %>
 </div>

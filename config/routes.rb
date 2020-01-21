@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :clients
   resources :budgets do
     get 'email',    on: :member
-    get 'invoice',  on: :member
+    resources :budget_convertors, only: [:new, :create]
   end
   resources :invoices do
     get 'email', on: :member

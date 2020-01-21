@@ -1,0 +1,9 @@
+<%= form_with(url: budget_budget_convertors_path(budget), local: true, html: {class: 'form-width-400'}) do |form| %>
+  <div class="form-group">
+    <%= form.text_field :purchase_order, class: 'form-control', placeholder: 'Orden de Compra', required: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Guardar Factura', class: 'btn btn-lg btn-block btn-primary' %>
+  </div>
+<% end %>
