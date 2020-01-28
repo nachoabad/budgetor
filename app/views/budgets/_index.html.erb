@@ -1,0 +1,26 @@
+
+<div id='budgets_index' class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Status</th>
+        <th>Fecha</th>
+        <th>Cliente</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @budgets.each do |budget| %>
+        <tr>
+          <td><%= budget_status_button budget %></td>
+          <td><%= l budget.updated_at.to_date %></td>
+          <td><%= budget.client.name %></td>
+          <td><%= link_to 'Ver', budget %></td>
+          <td><%= link_to 'Editar', edit_budget_path(budget) %></td>
+          <td><%= link_to 'Borrar', budget, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

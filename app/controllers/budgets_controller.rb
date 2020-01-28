@@ -12,6 +12,8 @@ class BudgetsController < ApplicationController
   end
 
   def email
+    @budget.update status: 'sent'
+    
     BudgetMailer.with(budget: @budget).client_email.deliver_later
 
     redirect_to @budget, notice: 'Estimado enviado al cliente'
@@ -49,6 +51,7 @@ class BudgetsController < ApplicationController
     respond_to do |format|
       if @budget.update(budget_params)
         format.html { redirect_to @budget, notice: 'Estimado actualizado' }
+        format.js { @budgets = current_user.budgets }
         format.json { render :show, status: :ok, location: @budget }
       else
         format.html { render :edit }
@@ -75,6 +78,6 @@ class BudgetsController < ApplicationController
     end
 
     def budget_params
-      params.require(:budget).permit(:address, :client_id)
+      params.require(:budget).permit(:address, :client_id, :status)
     end
 end

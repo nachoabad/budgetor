@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2020_01_14_123043) do
 
   create_table "budgets", force: :cascade do |t|
     t.string "address"
+    t.integer "status", default: 0
     t.bigint "client_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -73,6 +74,7 @@ ActiveRecord::Schema.define(version: 2020_01_14_123043) do
 
   create_table "invoices", force: :cascade do |t|
     t.string "address"
+    t.integer "status", default: 0
     t.string "purchase_order"
     t.bigint "client_id", null: false
     t.datetime "created_at", precision: 6, null: false
