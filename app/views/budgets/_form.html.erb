@@ -8,7 +8,7 @@
   </div>
 
   <div class="form-group">
-    <%= form.select :status, Budget.statuses.map { |key, value| [key.humanize, key] }, {}, class: 'form-control' %>
+    <%= form.select :status, Budget.statuses.map { |key, value| [key.humanize, key] }, {}, class: 'form-control' unless @budget.new_record? %>
   </div>
   
 
