@@ -20,6 +20,8 @@ class BudgetsController < ApplicationController
   end
 
   def invoice
+    @budget.update status: 'approved'
+
     invoice = Invoice.new @budget.attributes.slice('address', 'client_id')
     invoice.line_items.build @budget.line_items.map(&:attributes).map {|li| li.slice('description', 'price')}
     if invoice.save

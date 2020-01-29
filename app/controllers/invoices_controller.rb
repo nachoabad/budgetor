@@ -11,6 +11,8 @@ class InvoicesController < ApplicationController
   end
 
   def email
+    @invoice.update status: 'sent'
+
     InvoiceMailer.with(invoice: @invoice).client_email.deliver_later
 
     redirect_to @invoice, notice: 'Factura enviado al cliente'
@@ -41,6 +43,7 @@ class InvoicesController < ApplicationController
     respond_to do |format|
       if @invoice.update(invoice_params)
         format.html { redirect_to @invoice, notice: 'Factura actualizada' }
+        format.js { @invoices = current_user.invoices }
         format.json { render :show, status: :ok, location: @invoice }
       else
         format.html { render :edit }

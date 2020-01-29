@@ -1,15 +1,26 @@
 module InvoicesHelper
-  def status_button(status = 1)
-    status =  case status
-              when 1
-                {name: 'No Enviado',  color: 'warning'}
-              when 2
-                {name: 'Enviado',     color: 'info'}
-              when 3
-                {name: 'Aprobado',    color: 'success'}
+  def invoice_status_button(invoice)
+    status =  case invoice.status
+              when 'created'
+                {name: 'Creada',  color: 'danger'}
+              when 'sent'
+                {name: 'Enviada', color: 'warning'}
+              when 'paid'
+                {name: 'Pagada',  color: 'success'}
               end
 
-    link_to status[:name], root_path, class: "btn btn-sm btn-#{status[:color]}"
+    link_to status[:name], invoice_path(invoice, {invoice: {status: next_status(invoice)}}), class: "btn btn-sm btn-#{status[:color]}", remote: true, method: :put
     
+  end
+
+  def next_status(invoice)
+    case invoice.status
+    when 'created'
+      'sent'
+    when 'sent'
+      'paid'
+    when 'paid'
+      'created'
+    end
   end
 end

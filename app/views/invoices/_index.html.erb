@@ -1,0 +1,25 @@
+<div id='invoices_index' class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Status</th>
+        <th>Fecha</th>
+        <th>Cliente</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @invoices.each do |invoice| %>
+        <tr>
+          <td><%= invoice_status_button invoice %></td>
+          <td><%= l invoice.updated_at.to_date %></td>
+          <td><%= invoice.client.name %></td>
+          <td><%= link_to 'Ver', invoice %></td>
+          <td><%= link_to 'Editar', edit_invoice_path(invoice) %></td>
+          <td><%= link_to 'Borrar', invoice, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
