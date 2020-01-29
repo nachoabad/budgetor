@@ -13,14 +13,18 @@
         <%= @budget.client.user.phone %></p>
       </div>
     </div>
-    <div style='display: flex;justify-content:space-between;'>
-      <div style='width:40%'>
+
+    <div style='display: flex;justify-content:flex-start;'>
+      <div>
         <h2><%= @budget.client.name %></h2>
         <%= @budget.client.full_name %><br>
         <%= @budget.client.email %><br>
         <%= @budget.client.phone %></p>
       </div>
-      <div style='width:60%;'>
+    </div>
+
+    <div style='display:flex;justify-content:flex-end;'>
+      <div style='width:100%;'>
         <table border='1' style='float:right;'>
           <tbody>
             <tr>
