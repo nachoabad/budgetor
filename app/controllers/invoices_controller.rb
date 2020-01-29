@@ -66,6 +66,6 @@ class InvoicesController < ApplicationController
     end
 
     def invoice_params
-      params.require(:invoice).permit(:address, :purchase_order, :client_id)
+      params.require(:invoice).permit(:address, :purchase_order, :client_id, :status)
     end
 end

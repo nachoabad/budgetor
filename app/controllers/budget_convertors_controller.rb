@@ -3,6 +3,8 @@ class BudgetConvertorsController < ApplicationController
   before_action :set_budget, only: [:new, :create]
 
   def create
+    @budget.update status: 'approved'
+
     invoice = Invoice.new @budget.attributes.slice('address', 'client_id')
     invoice.purchase_order = params[:purchase_order]
     invoice.line_items.build @budget.line_items.map(&:attributes).map {|li| li.slice('description', 'price')}

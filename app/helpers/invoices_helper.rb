@@ -9,11 +9,11 @@ module InvoicesHelper
                 {name: 'Pagada',  color: 'success'}
               end
 
-    link_to status[:name], invoice_path(invoice, {invoice: {status: next_status(invoice)}}), class: "btn btn-sm btn-#{status[:color]}", remote: true, method: :put
+    link_to status[:name], invoice_path(invoice, {invoice: {status: next_invoice_status(invoice)}}), class: "btn btn-sm btn-#{status[:color]}", remote: true, method: :put
     
   end
 
-  def next_status(invoice)
+  def next_invoice_status(invoice)
     case invoice.status
     when 'created'
       'sent'
