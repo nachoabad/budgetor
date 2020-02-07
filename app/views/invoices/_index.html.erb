@@ -2,6 +2,7 @@
   <table class="table">
     <thead>
       <tr>
+        <th>ID</th>
         <th>Status</th>
         <th>Fecha</th>
         <th>Cliente</th>
@@ -12,6 +13,7 @@
     <tbody>
       <% @invoices.each do |invoice| %>
         <tr>
+          <td><%= invoice.id %></td>
           <td><%= invoice_status_button invoice %></td>
           <td><%= l invoice.updated_at.to_date %></td>
           <td><%= invoice.client.name %></td>

@@ -3,6 +3,7 @@
   <table class="table">
     <thead>
       <tr>
+        <th>ID</th>
         <th>Status</th>
         <th>Fecha</th>
         <th>Cliente</th>
@@ -13,6 +14,7 @@
     <tbody>
       <% @budgets.each do |budget| %>
         <tr>
+          <td><%= budget.id %></td>
           <td><%= budget_status_button budget %></td>
           <td><%= l budget.updated_at.to_date %></td>
           <td><%= budget.client.name %></td>
