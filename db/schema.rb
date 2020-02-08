@@ -93,7 +93,9 @@ ActiveRecord::Schema.define(version: 2020_01_14_123043) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string "name"
+    t.string "main_sentence"
+    t.string "quantity_sentence"
+    t.string "price_sentence"
     t.string "translation"
     t.integer "position"
     t.bigint "work_type_id", null: false

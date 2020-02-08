@@ -16,11 +16,27 @@ if Rails.env.development?
 
   work_type1 = WorkType.create! name: 'Budget Type 1'
 
-  question1 = Question.create! name: 'Pregunta 1', translation: 'Question 1', position: 1, work_type: work_type1
-  question2 = Question.create! name: 'Pregunta 2', translation: 'Question <User Input> 2', position: 2, work_type: work_type1
+  question1 = Question.create!  main_sentence: 'Haye you done question 1?',
+                                quantity_sentence: 'How many?',
+                                price_sentence: 'How much of?',
+                                translation: 'Question 1 <User Input> answered', 
+                                position: 1, 
+                                work_type: work_type1
 
-  choice11 = Choice.create! name: 'Opcion 11', translation: 'Choice 11', position: 1, question: question1
-  choice12 = Choice.create! name: 'Opcion 12', translation: 'Choice 12', position: 2, question: question1
+  question2 = Question.create!  main_sentence: 'Haye you done question 2?',
+                                quantity_sentence: 'How many?',
+                                price_sentence: 'How much of?',
+                                translation: 'Question 2 <User Input> answered', 
+                                position: 2, 
+                                work_type: work_type1
+
+  question3 = Question.create!  main_sentence: 'Haye you done question 3?',
+                                quantity_sentence: 'How many?',
+                                price_sentence: 'How much of?',
+                                translation: 'Question 3 <User Input> answered', 
+                                position: 3, 
+                                work_type: work_type1
+
 end
 
 if Rails.env.production?
