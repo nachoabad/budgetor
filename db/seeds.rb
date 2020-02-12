@@ -228,7 +228,7 @@ if Rails.env.production?
   question5 = Question.create!  main_sentence: '¿La propiedad tiene más de un piso?',
                                 quantity_sentence: '¿Cuantas escuadras por ser mas de un piso se instalaron?',
                                 price_sentence: 'Precio por escuadra por ser mas de un piso:',
-                                translation: "Fee for a <User Input> story building.",
+                                translation: "Fee for a 2 story building.",
                                 position: 5,
                                 work_type: techo_completo_contratista
 
@@ -274,7 +274,7 @@ if Rails.env.production?
                                 position: 11,
                                 work_type: techo_completo_contratista
 
-  question12 = Question.create!  main_sentence: '¿Se subieron escuadras de teja por escalera?',
+  question12 = Question.create!  main_sentence: '¿Tuviste que ir por material que falto?',
                                 quantity_sentence: '¿Cuantas veces tuviste que ir por material que falto?',
                                 price_sentence: 'Precio por ir por mas material:',
                                 translation: "Material trip charge fee.",
