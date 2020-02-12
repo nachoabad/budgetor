@@ -175,7 +175,7 @@ if Rails.env.production?
   question11 = Question.create!  main_sentence: '¿Se instaló ice shield?',
                                 quantity_sentence: '¿Cuántos pies cuadrados de ice shield se instaló?',
                                 price_sentence: 'Precio por pie cuadrado:',
-                                translation: 'Installed ice shield around vents to seal and protect properly'
+                                translation: 'Installed ice shield around vents to seal and protect properly',
                                 position: 11,
                                 work_type: techo_completo
 
