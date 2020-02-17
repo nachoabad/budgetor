@@ -1,10 +1,9 @@
 import React, { useState }  from 'react'
-import ReactDOM             from 'react-dom'
 import Choices              from './Choices'
 import Confirmation         from './Confirmation'
 
 
-const BudgetForm = props => {
+const OneLineItemableForm = props => {
   const questions           = props.questions
   const line_itemable_id    = props.line_itemable_id
   const line_itemable_type  = props.line_itemable_type
@@ -53,24 +52,5 @@ const BudgetForm = props => {
     );
   }
 }
-/*
-document.addEventListener('turbolinks:load', () => {
-  const node = document.querySelector('#react-budget-form');
-  if (node) {
-    const questions           = node.dataset.questions;
-    const line_itemable_id    = node.dataset.line_itemable_id;
-    const line_itemable_type  = node.dataset.line_itemable_type;
-    const work_type_id        = node.dataset.work_type_id;
-    const csrf_token          = node.dataset.csrf_token;
 
-    ReactDOM.render(
-      <BudgetForm questions={JSON.parse(questions)}
-                  line_itemable_id={line_itemable_id}
-                  line_itemable_type={line_itemable_type}
-                  work_type_id={work_type_id}
-                  csrf_token={csrf_token} />,
-      node
-    )
-  }
-})
-*/
+export default OneLineItemableForm

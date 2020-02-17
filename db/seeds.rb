@@ -14,7 +14,7 @@ if Rails.env.development?
 
   client1 = Client.create! name: 'Client 1', user: user1
 
-  work_type1 = WorkType.create! name: 'Budget Type 1'
+  work_type1 = WorkType.create! name: 'MultiLine', form_type: 'multi_line'
 
   question1 = Question.create!  main_sentence: 'Haye you done question 1?',
                                 quantity_sentence: 'How many?',
@@ -36,6 +36,13 @@ if Rails.env.development?
                                 translation: 'Question 3 <User Input> answered', 
                                 position: 3, 
                                 work_type: work_type1
+
+  work_type2 = WorkType.create! name: 'OneLine', form_type: 'one_line'
+
+  question1 = Question.create! name: 'Pregunta 1', translation: 'Question 1', position: 1, work_type: work_type2
+  choice11  = Choice.create! name: 'Opcion 11', translation: 'Choice 11', position: 1, question: question1	
+  choice12  = Choice.create! name: 'Opcion 12', translation: 'Choice 12', position: 2, question: question1
+  question2 = Question.create! name: 'Pregunta 2', translation: 'Question <User Input> 2', position: 2, work_type: work_type2
 
 end
 
