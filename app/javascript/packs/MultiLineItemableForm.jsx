@@ -1,7 +1,7 @@
-import React, { useState }  from 'react'
-import Question             from './Question'
-import Answer               from './Answer'
-import Confirmation         from './Confirmation'
+import React, { useState }    from 'react'
+import Question               from './Question'
+import Answer                 from './Answer'
+import MultiLineConfirmation  from './MultiLineConfirmation'
 
 
 const MultiLineItemableForm = props => {
@@ -57,7 +57,7 @@ const MultiLineItemableForm = props => {
     );
   } else {
     return (
-      <Confirmation work_type_id={work_type_id}
+      <MultiLineConfirmation work_type_id={work_type_id}
                     line_itemable_id={line_itemable_id}
                     line_itemable_type={line_itemable_type}
                     answers={answers}

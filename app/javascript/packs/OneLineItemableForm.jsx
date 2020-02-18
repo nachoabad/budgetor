@@ -1,6 +1,6 @@
 import React, { useState }  from 'react'
 import Choices              from './Choices'
-import Confirmation         from './Confirmation'
+import OneLineConfirmation  from './OneLineConfirmation'
 
 
 const OneLineItemableForm = props => {
@@ -43,7 +43,7 @@ const OneLineItemableForm = props => {
     );
   } else {
     return (
-      <Confirmation work_type_id={work_type_id}
+      <OneLineConfirmation work_type_id={work_type_id}
                     line_itemable_id={line_itemable_id}
                     line_itemable_type={line_itemable_type}
                     questions={questions}

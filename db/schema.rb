@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 2020_01_14_123043) do
 
   create_table "work_types", force: :cascade do |t|
     t.string "name"
+    t.string "form_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

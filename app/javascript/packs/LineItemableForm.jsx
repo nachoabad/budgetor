@@ -5,21 +5,21 @@ import MultiLineItemableForm  from './MultiLineItemableForm'
 
 const LineItemableForm = props => {
   
-  if (true) {
+  if (props.form_type == 'multi_line') {
     return (
       <MultiLineItemableForm questions={props.questions}
-                        line_itemable_id={props.line_itemable_id}
-                        line_itemable_type={props.line_itemable_type}
-                        work_type_id={props.work_type_id}
-                        csrf_token={props.csrf_token} />
+                            line_itemable_id={props.line_itemable_id}
+                            line_itemable_type={props.line_itemable_type}
+                            work_type_id={props.work_type_id}
+                            csrf_token={props.csrf_token} />
     );
   } else {
     return (
       <OneLineItemableForm questions={props.questions}
-                        line_itemable_id={props.line_itemable_id}
-                        line_itemable_type={props.line_itemable_type}
-                        work_type_id={props.work_type_id}
-                        csrf_token={props.csrf_token} />
+                           line_itemable_id={props.line_itemable_id}
+                           line_itemable_type={props.line_itemable_type}
+                           work_type_id={props.work_type_id}
+                           csrf_token={props.csrf_token} />
     );
   }
 }
@@ -31,6 +31,7 @@ document.addEventListener('turbolinks:load', () => {
     const line_itemable_id    = node.dataset.line_itemable_id;
     const line_itemable_type  = node.dataset.line_itemable_type;
     const work_type_id        = node.dataset.work_type_id;
+    const form_type           = node.dataset.form_type;
     const csrf_token          = node.dataset.csrf_token;
 
     ReactDOM.render(
@@ -38,6 +39,7 @@ document.addEventListener('turbolinks:load', () => {
                         line_itemable_id={line_itemable_id}
                         line_itemable_type={line_itemable_type}
                         work_type_id={work_type_id}
+                        form_type={form_type}
                         csrf_token={csrf_token} />,
       node
     )
