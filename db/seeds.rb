@@ -39,7 +39,7 @@ if Rails.env.development?
 end
 
 if Rails.env.production?
-  techo_reparacion =  WorkType.create! name: 'Reparación Techo'
+  techo_reparacion =  WorkType.create! name: 'Reparación Techo', form_type: 'one_line'
 
   q = Question.create!  position: 1, main_sentence: 'Teja de shingle (asfalto)', work_type: techo_reparacion
       Choice.create! name: '25 años', translation: '3-Tab Asphalt Shingle Roof Work', position: 1, question: q
@@ -77,7 +77,7 @@ if Rails.env.production?
 
   #############
 
-  techo_completo =  WorkType.create! name: 'Techo Completo'
+  techo_completo =  WorkType.create! name: 'Techo Completo', form_type: 'one_line'
 
   q = Question.create!  position: 1, main_sentence: 'Teja de shingle (asfalto)', work_type: techo_completo
       Choice.create! name: '25 años', translation: '3-Tab Asphalt Shingle Roof Work', position: 1, question: q
@@ -139,7 +139,7 @@ if Rails.env.production?
 
   #############
 
-  techo_completo_contratista =  WorkType.create! name: 'Techo Completo - Contratista'
+  techo_completo_contratista =  WorkType.create! name: 'Techo Completo - Contratista', form_type: 'multi_line'
 
   question1 = Question.create!  main_sentence: '¿Se instaló Teja de Asfalto?',
                                 quantity_sentence: '¿Cuántas escuadras se instalaron?',
