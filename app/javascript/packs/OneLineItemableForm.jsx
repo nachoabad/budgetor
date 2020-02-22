@@ -33,7 +33,7 @@ const OneLineItemableForm = props => {
   if (questions.length > position) {
     return (
       <div>
-        <h4>{questions[position].name}</h4>
+        <h4>{questions[position].main_sentence}</h4>
         <Choices  question={questions[position]}
                   handleClick={handleClick}
                   input={input}

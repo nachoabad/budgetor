@@ -48,17 +48,20 @@ class LineItemsController < ApplicationController
       when 'one_line'
         line_item = @line_itemable.line_items.new
         line_item.price = params[:line_item][:price]
-        description = ''
+        line_item.description = ''
+
         questions = Question.where(work_type_id: params[:line_itemable][:work_type_id]).order(:position)
         questions.each_with_index do |question, index|
           if question.choices.exists?
             next unless translation = Choice.find(params[:line_itemable][:answers][index]).translation
-            description << (translation + '. ')
+            line_item.description << (translation + '. ')
           else
             next if params[:line_itemable][:answers][index] == '0'
-            description << (question.translation.gsub("<User Input>", params[:line_itemable][:answers][index]) + '. ')
+            line_item.description << (question.translation.gsub("<User Input>", params[:line_itemable][:answers][index]) + '. ')
           end
         end
+
+        line_item.save!
       end
     end
 
