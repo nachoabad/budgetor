@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 if Rails.env.development?
   AdminUser.create!(email: 'admin1@mail.com', password: 'adminadmin', password_confirmation: 'adminadmin')
 
@@ -49,156 +41,101 @@ end
 if Rails.env.production?
   techo_reparacion =  WorkType.create! name: 'Reparación Techo'
 
-  question1 = Question.create!  main_sentence: '¿Se instaló Teja de shingle (asfalto) 25 años?',
-                                quantity_sentence: '¿Cuántos pies cuadrados de teja?',
-                                price_sentence: 'Precio por pie cuadrado:',
-                                translation: 'Repaired <User Input> sq ft of 3-Tab Asphalt Shingle Roof Work. Removed and replaced as required for proper repair', 
-                                position: 1,
-                                work_type: techo_reparacion
+  q = Question.create!  position: 1, main_sentence: 'Teja de shingle (asfalto)', work_type: techo_reparacion
+      Choice.create! name: '25 años', translation: '3-Tab Asphalt Shingle Roof Work', position: 1, question: q
+      Choice.create! name: '30 años', translation: 'Dimensional Asphalt Shingle Roof Work', position: 2, question: q
 
-  question2 = Question.create!  main_sentence: '¿Se instaló Teja de shingle (asfalto) 30 años?',
-                                quantity_sentence: '¿Cuántos pies cuadrados de teja?',
-                                price_sentence: 'Precio por pie cuadrado:',
-                                translation: 'Repaired <User Input> sq ft of Dimensional Asphalt Shingle Roof Work. Removed and replaced as required for proper repair', 
-                                position: 2,
-                                work_type: techo_reparacion
+  q = Question.create!  position: 2,
+                        main_sentence: 'Cuántos pies cuadrados de teja?',
+                        translation: 'Repaired <User Input> sq ft of shingle roof. Removed and replaced as required for proper repair',
+                        work_type: techo_reparacion
 
-  question3 = Question.create!  main_sentence: '¿Se reemplazó papel Normal?',
-                                quantity_sentence: '¿Cuántos pies cuadrados de papel Normal?',
-                                price_sentence: 'Precio por pie cuadrado:',
-                                translation: 'Replaced <User Input> sq ft of felt underlayment as required', 
-                                position: 3,
-                                work_type: techo_reparacion
+  q = Question.create!  position: 3, main_sentence: 'Se reemplazó papel?', work_type: techo_reparacion
+      Choice.create! name: 'Normal', translation: 'Replaced the felt underlayment as required', position: 1, question: q
+      Choice.create! name: 'Sintético', translation: 'Replaced synthetic underlayment as required', position: 2, question: q
+      Choice.create! name: 'No', position: 3, question: q
 
-  question4 = Question.create!  main_sentence: '¿Se reemplazó papel Sintético?',
-                                quantity_sentence: '¿Cuántos pies cuadrados de papel Sintético?',
-                                price_sentence: 'Precio por pie cuadrado:',
-                                translation: 'Replaced <User Input> sq ft of synthetic underlayment as required', 
-                                position: 4,
-                                work_type: techo_reparacion
+  q = Question.create!  position: 4,
+                        main_sentence: 'Cuántos pies cuadrados de decking se reemplazó?',
+                        translation: 'Removed and replaced <User Input> sq ft of damaged decking with new decking',
+                        work_type: techo_reparacion
 
-  question5 = Question.create!  main_sentence: '¿Se hizo reemplazo de Decking?',
-                                quantity_sentence: '¿Cuántos pies cuadrados de decking se reemplazó?',
-                                price_sentence: 'Precio por pie cuadrado:',
-                                translation: 'Removed and replaced <User Input> sq ft of damaged decking with new decking', 
-                                position: 5,
-                                work_type: techo_reparacion
+  q = Question.create!  position: 5,
+                        main_sentence: 'Cuántos pies lineales de flashing se reemplazó?',
+                        translation: 'Replaced <User Input> linear ft of galvanized flashing as required',
+                        work_type: techo_reparacion
 
-  question6 = Question.create!  main_sentence: '¿Se reemplazó flashing?',
-                                quantity_sentence: '¿Cuántos pies lineales de flashing se reemplazó?',
-                                price_sentence: 'Precio por pie lineal:',
-                                translation: 'Replaced <User Input> linear ft of galvanized flashing as required', 
-                                position: 6,
-                                work_type: techo_reparacion
-  
-  question7 = Question.create!  main_sentence: '¿Se reemplazaron pipas?',
-                                quantity_sentence: '¿Cuántos pipas se reemplazaron?',
-                                price_sentence: 'Precio por unidad:',
-                                translation: 'Replaced <User Input> pipe(s) and/or roof jack(s) as required. Sealed properly to prevent water intrusion', 
-                                position: 7,
-                                work_type: techo_reparacion
-  
-  question8 = Question.create!  main_sentence: '¿Se reemplazaron ventanillas?',
-                                quantity_sentence: '¿Cuántas ventanillas se reemplazaron?',
-                                price_sentence: 'Precio por unidad:',
-                                translation: 'Replaced <User Input> vent(s) as required. Sealed properly to prevent any water intrusion', 
-                                position: 8,
-                                work_type: techo_reparacion
+  q = Question.create!  position: 6,
+                        main_sentence: 'Cuántos pipas se reemplazaron?',
+                        translation: 'Replaced <User Input> pipe(s) and/or roof jack(s) as required. Sealed properly to prevent water intrusion',
+                        work_type: techo_reparacion
+
+  q = Question.create!  position: 7,
+                        main_sentence: 'Cuántas ventanillas se reemplazaron?',
+                        translation: 'Replaced <User Input> vent(s) as required. Sealed properly to prevent any water intrusion',
+                        work_type: techo_reparacion
 
   #############
 
   techo_completo =  WorkType.create! name: 'Techo Completo'
 
-  question1 = Question.create!  main_sentence: '¿Se instaló Teja de shingle (asfalto) 25 años?',
-                                quantity_sentence: '¿Cuántas escuadras?',
-                                price_sentence: 'Precio por escuadra:',
-                                translation: 'Installed <User Input> squares of asphalt shingle roof. Installed same area of new underlayment as required. All new materials were sealed properly', 
-                                position: 1,
-                                work_type: techo_completo
+  q = Question.create!  position: 1, main_sentence: 'Teja de shingle (asfalto)', work_type: techo_completo
+      Choice.create! name: '25 años', translation: '3-Tab Asphalt Shingle Roof Work', position: 1, question: q
+      Choice.create! name: '30 años', translation: 'Dimensional Asphalt Shingle Roof Work', position: 2, question: q
 
-  question2 = Question.create!  main_sentence: '¿Se instaló Teja de shingle (asfalto) 30 años?',
-                                quantity_sentence: '¿Cuántas escuadras?',
-                                price_sentence: 'Precio por escuadra:',
-                                translation: 'Installed <User Input> squares of Dimensional Asphalt Shingle Roof Work. Installed same area of new underlayment as required. All new materials were sealed properly',
-                                position: 2,
-                                work_type: techo_completo
+  q = Question.create!  position: 2,
+                        main_sentence: 'Cuántas escuadras?',
+                        translation: 'Installed <User Input> squares of asphalt shingle roof. Installed same area of new underlayment as required. All new materials were sealed properly',
+                        work_type: techo_completo
 
-  question3 = Question.create!  main_sentence: '¿Se hizo nuevo Ridge Vent?',
-                                quantity_sentence: '¿Cuántos pies de Ridge Vent nuevo se hicieron?',
-                                price_sentence: 'Precio por pie:',
-                                translation: 'Sawed <User Input> plywood decking peak to create new vent and installed new ridgevent',
-                                position: 3,
-                                work_type: techo_completo
+  q = Question.create!  position: 3,
+                        main_sentence: 'Cuántos pies de Ridge Vent nuevo se hicieron?',
+                        translation: 'Sawed <User Input> plywood decking peak to create new vent and installed new ridgevent',
+                        work_type: techo_completo
 
-  question4 = Question.create!  main_sentence: '¿Se cambió Ridge?',
-                                quantity_sentence: '¿Cuántos pies de Ridge se cambiaron?',
-                                price_sentence: 'Precio por pie:',
-                                translation: 'Removed and replaced <User Input> linear feet of ridge vent with new',
-                                position: 4,
-                                work_type: techo_completo
+  q = Question.create!  position: 4,
+                        main_sentence: 'Cuántos pies de Ridge se cambiaron?',
+                        translation: 'Removed and replaced <User Input> linear feet of ridge vent with new',
+                        work_type: techo_completo
 
-  question5 = Question.create!  main_sentence: '¿Se instaló Ridge?',
-                                quantity_sentence: '¿Cuántos pies de Ridge se instalaron?',
-                                price_sentence: 'Precio por pie:',
-                                translation: 'Installed <User Input> linear feet or ridge',
-                                position: 5,
-                                work_type: techo_completo
+  q = Question.create!  position: 5,
+                        main_sentence: 'Cuántos pies de Ridge se instalaron?',
+                        translation: 'Installed <User Input> linear feet or ridge',
+                        work_type: techo_completo
 
-  question6 = Question.create!  main_sentence: '¿Se usó papel Normal?',
-                                quantity_sentence: '¿Cuántos pies cuadrados de papel Normal?',
-                                price_sentence: 'Precio por pie:',
-                                translation: 'Installed <User Input> square feets of new felt underlayment',
-                                position: 6,
-                                work_type: techo_completo
+  q = Question.create!  position: 6, main_sentence: 'Se usó papel normal o sintético?', work_type: techo_completo
+                        Choice.create! name: 'Normal', translation: 'Installed new felt underlayment', position: 1, question: q
+                        Choice.create! name: 'Sintético', translation: 'Installed new synthetic underlayment', position: 2, question: q
+                        Choice.create! name: 'Ninguno', position: 3, question: q
 
-  question7 = Question.create!  main_sentence: '¿Se usó papel Sintético?',
-                                quantity_sentence: '¿Cuántos pies cuadrados de papel Sintético?',
-                                price_sentence: 'Precio por pie:',
-                                translation: 'Installed <User Input> square feets of new synthetic underlayment',
-                                position: 7,
-                                work_type: techo_completo
+  q = Question.create!  position: 7,
+                        main_sentence: 'Cuánto flashing?',
+                        translation: 'Installed <User Input> linear feet of new flashing',
+                        work_type: techo_completo
 
-  question8 = Question.create!  main_sentence: '¿Se instaló flashing?',
-                                quantity_sentence: '¿Cuántos pies lineales de flashing se instaló?',
-                                price_sentence: 'Precio por pie lineal:',
-                                translation: 'Installed <User Input> linear ft of galvanized flashing as required', 
-                                position: 8,
-                                work_type: techo_completo
+  q = Question.create!  position: 8,
+                        main_sentence: 'Cuántas pipas se cambiaron?',
+                        translation: 'Installed <User Input> new pipes and/or roof jacks, all sealed properly to prevent water intrusion',
+                        work_type: techo_completo
 
-  question9 = Question.create!  main_sentence: '¿Se instalaron pipas?',
-                                quantity_sentence: '¿Cuántos pipas se instalaron?',
-                                price_sentence: 'Precio por unidad:',
-                                translation: 'Installed <User Input> pipe(s) and/or roof jack(s) as required. Sealed properly to prevent water intrusion', 
-                                position: 9,
-                                work_type: techo_completo
+  q = Question.create!  position: 9,
+                        main_sentence: 'Cuántas ventilas se cambiaron?',
+                        translation: 'Installed <User Input> roof vents, all sealed properly to prevent water intrusion',
+                        work_type: techo_completo
 
-  question10 = Question.create!  main_sentence: '¿Se instalaron ventanillas?',
-                                quantity_sentence: '¿Cuántas ventanillas se instalaron?',
-                                price_sentence: 'Precio por unidad:',
-                                translation: 'Installed <User Input> roof vents, all sealed properly to prevent water intrusion',
-                                position: 10,
-                                work_type: techo_completo
+  q = Question.create!  position: 10, main_sentence: 'Se instaló ice shield?', work_type: techo_completo
+                        Choice.create! name: 'Sí', translation: 'Installled ice shield around vents to seal and protect properly', position: 1, question: q
+                        Choice.create! name: 'No', position: 2, question: q
 
-  question11 = Question.create!  main_sentence: '¿Se instaló ice shield?',
-                                quantity_sentence: '¿Cuántos pies cuadrados de ice shield se instaló?',
-                                price_sentence: 'Precio por pie cuadrado:',
-                                translation: 'Installed ice shield around vents to seal and protect properly',
-                                position: 11,
-                                work_type: techo_completo
+  q = Question.create!  position: 11,
+                        main_sentence: 'Cuántos pies de drip edge se instalaron?',
+                        translation: 'Installed <User Input> linear feet of drip edge as required',
+                        work_type: techo_completo
 
-  question12 = Question.create!  main_sentence: '¿Se instaló drip edge?',
-                                quantity_sentence: '¿Cuántos pies lineales de drip edge se instalaron?',
-                                price_sentence: 'Precio por pie lineal:',
-                                translation: 'Installed <User Input> linear feet of drip edge as required',
-                                position: 12,
-                                work_type: techo_completo
-
-  question13 = Question.create!  main_sentence: '¿Se cambió decking?',
-                                quantity_sentence: '¿Cuántos pies de decking se cambiaron?',
-                                price_sentence: 'Precio por pie lineal:',
-                                translation: 'Installed <User Input> linear feet of new decking as required to install new roofing materials properly',
-                                position: 13,
-                                work_type: techo_completo
+  q = Question.create!  position: 12,
+                        main_sentence: 'Cuántos pies de decking se cambiaron?',
+                        translation: 'Installed <User Input> of new decking as required to install new roofing materials properly',
+                        work_type: techo_completo
 
   #############
 
