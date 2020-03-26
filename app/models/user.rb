@@ -11,6 +11,6 @@ class User < ApplicationRecord
   has_many :line_items, through: :budgets
 
   def full_name
-    first_name + ' ' + last_name
+    first_name + ' ' + last_name if first_name && last_name
   end
 end
