@@ -12,6 +12,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string :company_name
       t.string :phone
       t.string :occupation
+      t.string :attribution_ref
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at

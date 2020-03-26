@@ -18,6 +18,11 @@
       <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "new-password" %>
     </div>
 
+    <div class="form-group mt-3">
+      <%= f.label 'Número de Referencia' %>
+      <%= f.text_field :attribution_ref, class: 'form-control', placeholder: "(opcional)" %>
+    </div>
+
     <%= f.submit "Registrarme", class: 'btn btn-lg btn-primary btn-block mb-3' %>
     <%= render "devise/shared/links" %>
   <% end %>

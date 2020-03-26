@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 2020_01_14_123043) do
     t.string "company_name"
     t.string "phone"
     t.string "occupation"
+    t.string "attribution_ref"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
